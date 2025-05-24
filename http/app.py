@@ -45,7 +45,10 @@ def hello():
 def hi():
     return redirect(url_for('hello'))
 
-
+@app.route('/hi2')
+def hi():
+    return redirect(url_for('hello'))
+    
 # use int URL converter
 @app.route('/goback/<int:year>')
 def go_back(year):
