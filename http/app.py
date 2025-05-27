@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
     :author: Grey Li (李辉)
     :url: http://greyli.com
@@ -38,12 +38,6 @@ def hello():
         response += '[Not Authenticated]'
     return response
 
-
-
-# redirect
-@app.route('/hi')
-def hi():
-    return redirect(url_for('hello'))
 
 @app.route('/hi2')
 def hi():
