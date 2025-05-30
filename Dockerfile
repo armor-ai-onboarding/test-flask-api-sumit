@@ -12,7 +12,12 @@ RUN apt-get update && \
     build-essential \
     curl \
     git \
-    binutils && \
+    subversion \
+    sysvinit-utils tar \
+    sudo \
+    vim \
+    binutils=2.31.1-16 \
+    binutils-common=2.31.1-16 && \
     add-apt-repository ppa:deadsnakes/ppa -y && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
