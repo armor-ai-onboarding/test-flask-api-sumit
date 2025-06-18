@@ -1,0 +1,43 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@2.1.4
+
+jobs:
+  build-and-push:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+      - docker/check
+      - docker/build:
+          image: mycircle/app
+          tag: latest,$CIRCLE_SHA1
+      - docker/push:
+          image: mycircle/app
+          tag: latest,$CIRCLE_SHA1
+
+  deploy:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Deploy to production
+          command: |
+            echo "Deploying mycircle/app:$CIRCLE_SHA1"
+            ./deploy.sh mycircle/app:$CIRCLE_SHA1
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build-and-push
+      - deploy:
+          requires:
+            - build-and-push
+          filters:
+            branches:
+              only: main
