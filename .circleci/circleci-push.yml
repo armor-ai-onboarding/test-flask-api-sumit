@@ -13,10 +13,10 @@ jobs:
           version: 20.10.14
       - docker/check
       - docker/build:
-          image: mycircle/authserver
+          image: mycircle/authserver-test2
           tag: latest,$CIRCLE_SHA1
       - docker/push:
-          image: mycircle/authserver
+          image: mycircle/authserver-test2
           tag: latest,$CIRCLE_SHA1
 
   deploy:
@@ -27,8 +27,8 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-            echo "Deploying mycircle/authserver:$CIRCLE_SHA1"
-            ./deploy.sh mycircle/authserver:$CIRCLE_SHA1
+            echo "Deploying mycircle/authserver-test2:$CIRCLE_SHA1"
+            ./deploy.sh mycircle/authserver-test2:$CIRCLE_SHA1
 
 workflows:
   version: 2
