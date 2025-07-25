@@ -17,7 +17,7 @@ def index():
     return '<h1>Hello, World!</h1>'
 
 
-# bind multiple URL for one view function
+# bind multiple URL for one view function yoyoy
 @app.route('/hi')
 @app.route('/hello')
 def say_hello():
