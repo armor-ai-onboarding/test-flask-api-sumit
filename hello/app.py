@@ -17,14 +17,14 @@ def index():
     return '<h1>Hello, World!</h1>'
 
 
-# bind multiple URL for one view function
+# bind multiple URL for one view function yoyoy
 @app.route('/hi')
 @app.route('/hello')
 def say_hello():
     return '<h1>Hello, Flask!</h1>'
 
 
-# dynamic route, URL variable default
+# dynamic route, URL variable default code
 @app.route('/greet', defaults={'name': 'Programmer'})
 @app.route('/greet/<name>')
 def greet(name):
